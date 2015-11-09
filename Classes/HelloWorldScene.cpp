@@ -1,6 +1,14 @@
 #include "HelloWorldScene.h"
 
+#include <iostream>
+#include <string>
+#include <string.h>
+
 USING_NS_CC;
+using namespace std;
+
+const string HOST = "localhost";
+const unsigned SERVER_PORT = 5000;
 
 Scene* HelloWorld::createScene()
 {
@@ -15,6 +23,18 @@ Scene* HelloWorld::createScene()
 
     // return the scene
     return scene;
+}
+
+void HelloWorld::OnRead(NL::Socket* socket, NL::SocketGroup* group, void* reference) {
+	char buffer[256];
+	buffer[255] = '\0';
+	socket->read(buffer, 255);
+	cout << "\nReceived message: " << buffer;
+}
+
+void HelloWorld::OnDisconnect(NL::Socket* socket, NL::SocketGroup* group, void* reference) {
+
+		_disconnect = true;
 }
 
 // on "init" you need to initialize your instance
@@ -71,6 +91,42 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+
+	_disconnect = false;
+
+	try {
+
+		NL::init();
+
+		NL::Socket socket(HOST, SERVER_PORT);
+
+		NL::SocketGroup group;
+		group.add(&socket);
+
+		group.setCmdOnRead(CC_CALLBACK_3(HelloWorld::OnRead, this));
+		group.setCmdOnDisconnect(CC_CALLBACK_3(HelloWorld::OnDisconnect, this));
+
+		while (!_disconnect) {
+
+			char input[256];
+			input[255] = '\0';
+			cout << "\n--> ";
+			cin.getline(input, 255);
+
+			if (!strcmp(input, "exit"))
+				_disconnect = true;
+			else
+				socket.send(input, strlen(input) + 1);
+
+			group.listen(500);
+		}
+
+	}
+
+	catch (NL::Exception e) {
+
+		cout << "\n***ERROR*** " << e.what();
+	}
     
     return true;
 }

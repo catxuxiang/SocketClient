@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 
+#include <netlink/socket.h>
+#include <netlink/socket_group.h>
+
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -15,6 +18,12 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+private:
+	void OnRead(NL::Socket* socket, NL::SocketGroup* group, void* reference);
+	void OnDisconnect(NL::Socket* socket, NL::SocketGroup* group, void* reference);
+
+	bool _disconnect;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -3,6 +3,8 @@
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 
+#include "vld.h"
+
 // Windows Header Files:
 #include <windows.h>
 #include <tchar.h>

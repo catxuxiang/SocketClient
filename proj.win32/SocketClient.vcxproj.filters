@@ -10,6 +10,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\netlink">
+      <UniqueIdentifier>{19b6e6b8-5c2c-46a2-8644-7b1c522519b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -20,6 +23,21 @@
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netlink\core.cc">
+      <Filter>src\netlink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netlink\smart_buffer.cc">
+      <Filter>src\netlink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netlink\socket.cc">
+      <Filter>src\netlink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netlink\socket_group.cc">
+      <Filter>src\netlink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\netlink\util.cc">
+      <Filter>src\netlink</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,10 +50,57 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\netlink\config.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\core.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\exception.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\netlink.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\release_manager.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\smart_buffer.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\socket.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\socket_group.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\util.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\release_manager.inline.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\util.inline.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\socket_group.inline.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\smart_buffer.inline.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\netlink\socket.inline.h">
+      <Filter>src\netlink</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\netlink\exception.code.inc">
+      <Filter>src\netlink</Filter>
+    </None>
   </ItemGroup>
 </Project>
